@@ -1,0 +1,10 @@
+sensor.plexflix_library_movies:
+  unit_of_measurement: Movies
+sensor.plexflix_library_tv_shows:
+  unit_of_measurement: Episodes
+  shows: 12
+  seasons: 27
+sensor.plexflix_library_music:
+  unit_of_measurement: Tracks
+sensor.plexflix_library_photos:
+  unit_of_measurement: Photos

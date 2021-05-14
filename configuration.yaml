@@ -1,0 +1,81 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+frontend:
+  themes: !include_dir_merge_named themes
+  
+homeassistant:
+  customize: !include customize.yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+  
+  
+panel_iframe:
+  tautulli:
+    title: Tautulli
+    icon: mdi:filmstrip
+    url: http://homeassistant.local:8181/home
+    
+#
+updater:
+# Sensors Go Here
+sensor:
+  - platform: uptime
+    name: Time Online
+  - platform: version
+    name: HA Version
+
+    #Steam Online
+  - platform: steam_online
+    api_key: !secret steam_api
+    accounts:
+      - 76561198202177572
+      - 76561198044019842
+      - 76561198127082846
+      - 76561198144963307
+
+  - platform: tautulli
+    api_key: 781a317719004a0997d2e8c05e167b64
+    host: localhost
+    monitored_users: 
+        - undamagedvirus_
+    monitored_conditions:
+        - Episode_Count
+     
+      
+  - platform: systemmonitor
+    resources:
+      - type: disk_use
+        arg: /home
+      - type: memory_free
+      - type: memory_use
+      - type: last_boot
+      - type: processor_use
+      - type: processor_temperature
+      
+  - platform: openhardwaremonitor
+    host: 192.168.0.19
+
+weather:
+  - platform: darksky_m
+    api_key: !secret darksky_key
+    units: si
+    mode: daily
+    
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+breaking_changes:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
