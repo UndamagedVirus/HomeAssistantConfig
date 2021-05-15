@@ -1,6 +1,11 @@
 # UndamagedVirus Home Assistant 
+<<<<<<< HEAD
 ![Shield1](https://img.shields.io/github/commit-activity/y/UndamagedVirus/HomeAssistantConfig)
 ![Shield2](https://img.shields.io/github/last-commit/UndamagedVirus/HomeAssistantConfig)
+=======
+
+
+>>>>>>> 0dc5477eff314540a7fa6e0d87ee9cef3247e8a7
 
 
 
@@ -32,5 +37,8 @@
 
 ### Automations Set Up:
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0dc5477eff314540a7fa6e0d87ee9cef3247e8a7
 ### Scripts Set Up:
