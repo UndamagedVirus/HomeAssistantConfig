@@ -8,3 +8,7 @@ sensor.plexflix_library_music:
   unit_of_measurement: Tracks
 sensor.plexflix_library_photos:
   unit_of_measurement: Photos
+sensor.homeassistantconfig:
+  latest_commit_message: Update README.md
+  latest_commit_sha: 0dc5477eff314540a7fa6e0d87ee9cef3247e8a7
+  icon: mdi:github

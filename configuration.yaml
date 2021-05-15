@@ -58,6 +58,13 @@ sensor:
       
   - platform: openhardwaremonitor
     host: 192.168.0.19
+  
+  - platform: github
+    access_token: !secret github_access_token
+    repositories:
+      - path: 'UndamagedVirus/HomeAssistantConfig'
+
+
 
 weather:
   - platform: darksky_m
@@ -72,6 +79,7 @@ speedtestdotnet:
     - ping
     - download
     - upload
+
 
 breaking_changes:
 
