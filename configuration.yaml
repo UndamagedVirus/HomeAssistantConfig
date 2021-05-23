@@ -67,6 +67,13 @@ sensor:
       - path: 'UndamagedVirus/HomeAssistantConfig'
 
 
+spotify:
+  client_id: !secret spotifyid
+  client_secret: !secret spotifysecret
+
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
 
 weather:
   - platform: darksky_m
@@ -81,6 +88,10 @@ speedtestdotnet:
     - ping
     - download
     - upload
+
+octoprint:
+  host: https://octoprint.local
+  api_key: !secret octoprint
 
 
 breaking_changes:

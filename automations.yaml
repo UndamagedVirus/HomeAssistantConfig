@@ -1,1 +1,86 @@
-[]
+- id: '1621360069173'
+  alias: Reboot The System
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  condition:
+  - condition: time
+    after: '21:30'
+    before: '22:30'
+    weekday:
+    - tue
+    - fri
+  action:
+  - service: hassio.host_reboot
+  mode: single
+- id: '1621458118673'
+  alias: Notify When Fraser Is At Work
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.frasers_iphone
+    zone: zone.work
+    event: enter
+  condition:
+  - condition: time
+    after: 06:30:00
+    before: 07:30:00
+  action:
+  - service: notify.mobile_app_sm_g781b
+    data:
+      message: 'Fraser has arrived at work & he loves you. '
+  mode: single
+- id: '1621526948112'
+  alias: Fraser Leaving Work
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.frasers_iphone
+    zone: zone.work
+    event: leave
+  condition:
+  - condition: time
+    after: '15:00:00'
+    before: '18:00:00'
+  action:
+  - service: notify.mobile_app_sm_g781b
+    data:
+      message: 'Fraser is leaving work '
+  mode: single
+- id: '1621686317110'
+  alias: Fraser Is Home Alone
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.fraser
+    zone: zone.home
+    event: enter
+  condition:
+  - condition: not
+    conditions:
+    - condition: zone
+      entity_id: person.julie
+      zone: zone.home
+  - condition: time
+    after: '15:00:00'
+    before: '17:00:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - service: media_player.volume_set
+    target:
+      device_id: e7a923a6ea960dbd455b156c0e9ea05b
+    data:
+      volume_level: 0.5
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.spotify_undamagedvirus
+    data:
+      media_content_id: https://open.spotify.com/playlist/6F2qbcdYN8qwVgzFQfFZNQ?si=de01e178d8f24775
+      media_content_type: playlist
+  mode: single

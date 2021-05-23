@@ -1,0 +1,16 @@
+spotify_play:
+  description: Play playlist in Spotify
+  sequence:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.5
+    target:
+      entity_id: media_player.bedroom_speaker
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.spotify_undamagedvirus
+    data:
+      media_content_id: https://open.spotify.com/playlist/6F2qbcdYN8qwVgzFQfFZNQ?si=de01e178d8f24775
+      media_content_type: playlist
+  mode: single
+  alias: Coming Home Music

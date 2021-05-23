@@ -12,3 +12,5 @@ sensor.homeassistantconfig:
   latest_commit_message: Update README.md
   latest_commit_sha: 0dc5477eff314540a7fa6e0d87ee9cef3247e8a7
   icon: mdi:github
+sensor.fraser_st500dm002_1bd142_load_used_space:
+  unit_of_measurement: GiB
