@@ -66,6 +66,22 @@ sensor:
     repositories:
       - path: 'UndamagedVirus/HomeAssistantConfig'
 
+remote:
+  - platform: broadlink
+    host: 192.168.0.45
+    mac: A0:43:B0:53:F7:00
+
+
+anniversaries:
+  sensors:
+  - name: Fraser's Birthday
+    date: '1992-12-07'
+  - name: Julie's Birthday 
+    date: '1994-01-05'
+  - name: Wedding Anniversary
+    date: '2019-09-28'
+  - name: Mum's Birthday 
+    date: '2020-05-29'
 
 spotify:
   client_id: !secret spotifyid
@@ -76,7 +92,7 @@ spotcast:
   sp_key: !secret sp_key
 
 weather:
-  - platform: darksky_m
+  - platform: darksky
     api_key: !secret darksky_key
     units: si
     mode: daily
@@ -90,9 +106,17 @@ speedtestdotnet:
     - upload
 
 octoprint:
-  host: https://octoprint.local
+  host: 192.168.0.20
   api_key: !secret octoprint
-
+  name: Ender3V2
+  number_of_tools: 2
+  sensors:
+    monitored_conditions:
+     - 'Current State'
+     - 'Job Percentage'
+     - 'Temperatures'
+     - 'Time Elapsed'
+     - 'Time Remaining'
 
 breaking_changes:
 

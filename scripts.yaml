@@ -14,3 +14,35 @@ spotify_play:
       media_content_type: playlist
   mode: single
   alias: Coming Home Music
+turn_on_tv:
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.livingroom_remote
+    data:
+      device: television
+      command: Power
+  mode: single
+  alias: Turn On TV
+turn_living_room_tv_up_by_2:
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.livingroom_remote
+    data:
+      device: television
+      command: VolumeUp
+      num_repeats: 2
+  mode: single
+  alias: Turn Living Room TV Up by 2
+turn_volume_down_by_2:
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.livingroom_remote
+    data:
+      device: television
+      command: VolumeDown
+      num_repeats: 2
+  mode: single
+  alias: Turn Volume Down By 2

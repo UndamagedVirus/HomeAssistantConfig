@@ -74,13 +74,38 @@
   action:
   - service: media_player.volume_set
     target:
-      device_id: e7a923a6ea960dbd455b156c0e9ea05b
+      device_id:
+      - e7a923a6ea960dbd455b156c0e9ea05b
+      - 26545deee5b5471dbd06692140b9e2ad
     data:
       volume_level: 0.5
   - service: media_player.play_media
     target:
       entity_id: media_player.spotify_undamagedvirus
+      device_id:
+      - e7a923a6ea960dbd455b156c0e9ea05b
+      - 26545deee5b5471dbd06692140b9e2ad
     data:
       media_content_id: https://open.spotify.com/playlist/6F2qbcdYN8qwVgzFQfFZNQ?si=de01e178d8f24775
       media_content_type: playlist
   mode: single
+- id: '1621980613876'
+  alias: Living Room Cube
+  description: ''
+  use_blueprint:
+    path: Mikkelmoeller/aqara-magic-cube-zha-51-actions.yaml
+    input:
+      remote: 74527e7b71aae4d90bd800527cd25318
+      one_to_one: []
+      cube_shake:
+      - service: script.turn_on
+        target:
+          entity_id: script.turn_on_tv
+      rotate_right:
+      - service: script.turn_on
+        target:
+          entity_id: script.turn_living_room_tv_up_by_2
+      rotate_left:
+      - service: script.turn_on
+        target:
+          entity_id: script.turn_volume_down_by_2
