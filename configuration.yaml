@@ -40,7 +40,7 @@ sensor:
       - 76561198144963307
 
   - platform: tautulli
-    api_key: 781a317719004a0997d2e8c05e167b64
+    api_key: !secret tautulli 
     host: localhost
     monitored_users: 
         - undamagedvirus_
