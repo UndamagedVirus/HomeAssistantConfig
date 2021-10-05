@@ -1,11 +1,6 @@
 # UndamagedVirus Home Assistant 
-<<<<<<< HEAD
 ![Shield1](https://img.shields.io/github/commit-activity/y/UndamagedVirus/HomeAssistantConfig)
 ![Shield2](https://img.shields.io/github/last-commit/UndamagedVirus/HomeAssistantConfig)
-=======
-
-
->>>>>>> 0dc5477eff314540a7fa6e0d87ee9cef3247e8a7
 
 
 
@@ -13,8 +8,18 @@
 
 ### Hardware Used:
 [Raspberry Pi 4 8GB RAM](https://www.amazon.co.uk/gp/product/B07BDR5PDW/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8psc=1)
+This is currently running Home Assistant
 
-[GeeekPi Case](https://www.amazon.co.uk/gp/product/B07BBFRLNJ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+[Raspberry Pi 3 Model B+](https://www.amazon.co.uk/gp/product/B07BDR5PDW/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+This is currently running Octoprint on an Ender 3 V2
+
+### Network:
+
+[BT Smart Hub 2](https://shop.bt.com/products/bt-smart-hub-2-097683-DYNK.html)
+
+[TP-Link TL-WPA4220 KIT](https://www.amazon.co.uk/gp/product/B01LXOZ4EN/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1)
+
+
 
 ### Components:
 
@@ -37,8 +42,4 @@
 
 ### Automations Set Up:
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0dc5477eff314540a7fa6e0d87ee9cef3247e8a7
 ### Scripts Set Up:
