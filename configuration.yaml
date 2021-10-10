@@ -65,6 +65,19 @@ sensor:
     access_token: !secret github_access_token
     repositories:
       - path: 'UndamagedVirus/HomeAssistantConfig'
+        name: HomeAssistantGithub
+
+template:
+  - sensor:
+      - name: "Github Last Commit"
+        icon: mdi:github
+        state: 
+          "{{state_attr ('sensor.homeassistantconfig' , 'latest_commit_message') }}"
+        
+
+
+
+
 
 remote:
   - platform: broadlink
