@@ -2,6 +2,10 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+# resources
+  - type: js, 
+    url: '/hacsfiles/garbage-collection-card/garbage-collection-card.js'
+
 
   
 frontend:
@@ -135,5 +139,9 @@ breaking_changes:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+light: !include lights.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+
+

@@ -46,3 +46,14 @@ turn_volume_down_by_2:
       num_repeats: 2
   mode: single
   alias: Turn Volume Down By 2
+lighttest:
+  alias: LightTest
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness: 114
+      color_name: red
+    target:
+      device_id: b5004cfd5841072f0553dbda06fc5b6c
+  mode: parallel
+  max: 10

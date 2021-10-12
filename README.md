@@ -80,10 +80,22 @@
     </thead>
     <tbody>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>IKEA TRÅDFRI E27 806 Lumen</td>
+            <td>2</td>
+            <td>15</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>IKEA TRÅDFRI E14 470 Lumen</td>
+            <td>2</td>
+            <td>15</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>IKEA STYRBAR Remote</td>
+            <td>1</td>
+            <td>15</td>
+            <td>15</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -144,6 +156,10 @@
 
 ## Automations
 
+* Send Notification To Home Assistant When I Arrive & Leave Work
+* 
 
+<p>&nbsp;</p>
 
-
+## Automation Ideas
+* 
