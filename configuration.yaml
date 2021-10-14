@@ -100,9 +100,18 @@ anniversaries:
   - name: Mum's Birthday 
     date: '2020-05-29'
 
+nest:
+  client_id: !secret googleclient_id
+  client_secret: !secret googleclient_secret
+  # "Project ID" in the Device Access Console
+  project_id: !secret googleproject_id
+  # Provide the full path exactly as shown under "Subscription name" in Google Cloud Console
+  subscriber_id: !secret googlesub_id
+
 spotify:
   client_id: !secret spotifyid
   client_secret: !secret spotifysecret
+
 
 spotcast:
   sp_dc: !secret sp_dc

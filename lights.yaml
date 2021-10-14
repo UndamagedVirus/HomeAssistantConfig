@@ -1,5 +1,11 @@
 - platform: group
   name: Gaming Room Lights
   entities:
-      - light.ikea_e14_1
-      - light.ikea_e27_1
+      - light.ikea_e14_gameroom
+      - light.ikea_e27_gameroom
+
+- platform: group
+  name: Gaming Room Lights
+  entities:
+      - light.ikea_e14_master
+      - light.ikea_e27_gameroom

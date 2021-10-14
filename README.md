@@ -7,6 +7,7 @@
 
 ## <u> Table Of Contents <u>
 - [Devices](#current-devices)
+- [To Do](To-Do-List)
 
 <p>&nbsp;</p>
 
@@ -162,4 +163,21 @@
 <p>&nbsp;</p>
 
 ## Automation Ideas
-* 
+
+<p>&nbsp;</p>
+
+## To-Do-List
+
+- [ ] Complete NEST Intergration (Looks like new Cameras are not fully supported just now)
+- [ ] Sort out tablet layout
+  - [ ] Quite basic, buttons for lights, inputs for tv, house temps.
+- [ ] Sort out main layout
+  - [ ] Home Page
+  - [ ] Downstairs 
+  - [ ] Upstairs
+  - [ ] Devices 
+  - [ ] Automations & Scripts
+  - [ ] System Information
+- [ ] Come up with a list of devices for purchase excluding the ones in the wishlist.
+- [ ]  Re-do automations previously made
+- [ ]  Delete old entities, devices etc.

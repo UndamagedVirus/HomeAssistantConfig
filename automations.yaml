@@ -122,3 +122,63 @@
   action:
   - service: script.lighttest
   mode: single
+- id: '1634062378166'
+  alias: Turn on Bedside Light @ 8PM
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 91f46498cd0dcda397ed37ecb55f7b12
+    entity_id: light.ikea_e14_masterbedroom_bedside
+    domain: light
+    brightness_pct: 20
+  mode: parallel
+  max: 10
+- id: '1634073345154'
+  alias: Bin Notification
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00:00'
+  condition:
+  - condition: state
+    entity_id: sensor.grey_bin
+    state: tomorrow
+    attribute: days
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.purple_bin
+      attribute: days
+      state: tomorrow
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 0
+        milliseconds: 0
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.food_bin
+      attribute: days
+      state: tomorrow
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 0
+        milliseconds: 0
+  action:
+  - service: notify.mobile_app_sm_g781b
+    data:
+      title: 'Bin '
+      message: There Is A Bin Due To Go Out Tomorrow
+  mode: parallel
+  max: 10
