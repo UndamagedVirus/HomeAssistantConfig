@@ -13,6 +13,7 @@
 *.gitattributes
 *.HA_VERSION
 *.jpg
+*.google_fit.token
 
 # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
