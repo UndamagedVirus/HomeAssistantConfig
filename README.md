@@ -16,7 +16,7 @@
 <table>
     <thead>
         <tr>
-            <th>Server 🖥</th>
+            <th>Hardware 🖥</th>
             <th>Units (#)</th>
             <th>Price per unit (£)</th>
             <th>Price (£)</th>
@@ -24,7 +24,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>Raspberry Pi 4 8GB RAM</td>
+            <td>Raspberry Pi 4 8GB RAM (Running HA)</td>
             <td>1</td>
             <td>84.48</td>
             <td>84.48</td>
@@ -36,11 +36,28 @@
             <td>29.57</td>
         </tr>
         <tr>
-        <tr>
             <td>Raspberry Pi 3 Model B+ (Running Octiprint)</td>
             <td>1</td>
             <td>28.73</td>
             <td>28.73</td>
+        </tr>
+        <tr>
+            <td>Synology DS920+</td>
+            <td>1</td>
+            <td>488.99</td>
+            <td>488.99</td>
+        </tr>
+        <tr>
+            <td>4TB Seagate Ironwolf </td>
+            <td>1</td>
+            <td>100.99</td>
+            <td>100.99</td>
+        </tr>
+        <tr>
+            <td>Fire HD10 Tablet</td>
+            <td>1</td>
+            <td>87.99</td>
+            <td>87.99</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -107,6 +124,28 @@
         </tbody>
     <thead>
         <tr>
+            <th>Plugs 🔌</th>
+            <th>Units (#)</th>
+            <th>Price per unit (£)</th>
+            <th>Price (£)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TP-Link Tapo Smart Plug</td>
+            <td>2</td>
+            <td>7.00</td>
+            <td>14.00</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+    <thead>
+        <tr>
             <th>Sesnors 🌡</th>
             <th>Units (#)</th>
             <th>Price per unit (£)</th>
@@ -135,16 +174,16 @@
     </thead>
     <tbody>
         <tr>
-            <td>Synology DS920+</td>
+            <td>IKEA TRÅDFRI E27 806 Lumen </td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>Fire HD10+ Tablet</td>
             <td>1</td>
         </tr>
         <tr>
-            <td>Seagate IronWolf 8TB Hard Drive</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>Fire HD 10 Tablet</td>
-            <td>1</td>
+            <td>Smart Plugs with Energy Monitoring</td>
+            <td>8</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -168,7 +207,7 @@
 
 ## To-Do-List
 
-- [ ] Complete NEST Intergration (Looks like new Cameras are not fully supported just now)
+- [x] Complete NEST Intergration (Looks like new Cameras are not fully supported just now)
 - [ ] Sort out tablet layout
   - [ ] Quite basic, buttons for lights, inputs for tv, house temps.
 - [ ] Sort out main layout
@@ -179,5 +218,7 @@
   - [ ] Automations & Scripts
   - [ ] System Information
 - [ ] Come up with a list of devices for purchase excluding the ones in the wishlist.
-- [ ]  Re-do automations previously made
 - [ ]  Delete old entities, devices etc.
+- [ ]  Move over to Node
+
+
