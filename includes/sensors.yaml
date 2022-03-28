@@ -1,0 +1,61 @@
+- platform: uptime
+  name: Time Online
+
+    #Steam Online
+- platform: steam_online
+  api_key: !secret steam_api
+  accounts:
+    - 76561198202177572
+    - 76561198044019842
+    - 76561198127082846
+    - 76561198144963307
+
+- platform: tautulli
+  api_key: !secret tautulli 
+  host: localhost
+  monitored_users: 
+      - undamagedvirus_
+  monitored_conditions:
+      - Episode_Count
+     
+      
+- platform: systemmonitor
+  resources:
+    - type: disk_use
+      arg: /home
+    - type: memory_free
+    - type: memory_use
+    - type: last_boot
+    - type: processor_use
+    - type: processor_temperature
+      
+- platform: openhardwaremonitor
+  host: 192.168.0.19
+  
+
+- platform: spotcast
+
+- platform: template
+  sensors:
+    pixel_free_storage:
+      friendly_name: "Pixel 6 Pro Free Storage"
+      entity_id: sensor.pixel_6_pro_internal_storage
+      icon_template: mdi:harddisk
+      value_template: "{{ state_attr('sensor.pixel_6_pro_internal_storage', 'Free internal storage') }}"
+
+    battlestation:
+        value_template: "{% if is_state('device_tracker.fraser', 'home') %} Online {% else %} Offline {% endif %}"
+
+- platform: google_fit
+  name: Google Fit
+  client_id: !secret googlefitclient
+  client_secret: !secret googlefitsecret
+
+
+
+
+
+
+- platform: command_line
+  name: shopping_list
+  command: python3 /config/shopping_list.py

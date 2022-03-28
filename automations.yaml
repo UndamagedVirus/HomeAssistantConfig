@@ -14,81 +14,6 @@
   action:
   - service: hassio.host_reboot
   mode: single
-- id: '1621458118673'
-  alias: Notify When Fraser Is At Work
-  description: ''
-  trigger:
-  - platform: zone
-    entity_id: device_tracker.frasers_iphone
-    zone: zone.work
-    event: enter
-  condition:
-  - condition: time
-    after: 06:30:00
-    before: 07:30:00
-  action:
-  - service: notify.mobile_app_sm_g781b
-    data:
-      message: 'Fraser has arrived at work & he loves you. '
-  mode: single
-- id: '1621526948112'
-  alias: Fraser Leaving Work
-  description: ''
-  trigger:
-  - platform: zone
-    entity_id: device_tracker.frasers_iphone
-    zone: zone.work
-    event: leave
-  condition:
-  - condition: time
-    after: '15:00:00'
-    before: '18:00:00'
-  action:
-  - service: notify.mobile_app_sm_g781b
-    data:
-      message: 'Fraser is leaving work '
-  mode: single
-- id: '1621686317110'
-  alias: Fraser Is Home Alone
-  description: ''
-  trigger:
-  - platform: zone
-    entity_id: person.fraser
-    zone: zone.home
-    event: enter
-  condition:
-  - condition: not
-    conditions:
-    - condition: zone
-      entity_id: person.julie
-      zone: zone.home
-  - condition: time
-    after: '15:00:00'
-    before: '17:00:00'
-    weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-  action:
-  - service: media_player.volume_set
-    target:
-      device_id:
-      - e7a923a6ea960dbd455b156c0e9ea05b
-      - 26545deee5b5471dbd06692140b9e2ad
-    data:
-      volume_level: 0.5
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.spotify_undamagedvirus
-      device_id:
-      - e7a923a6ea960dbd455b156c0e9ea05b
-      - 26545deee5b5471dbd06692140b9e2ad
-    data:
-      media_content_id: https://open.spotify.com/playlist/6F2qbcdYN8qwVgzFQfFZNQ?si=de01e178d8f24775
-      media_content_type: playlist
-  mode: single
 - id: '1621980613876'
   alias: Living Room Cube
   description: ''
@@ -109,19 +34,6 @@
       - service: script.turn_on
         target:
           entity_id: script.turn_volume_down_by_2
-- id: '1633997390957'
-  alias: Turn on Light
-  description: ''
-  trigger:
-  - platform: device
-    type: turned_on
-    device_id: b5004cfd5841072f0553dbda06fc5b6c
-    entity_id: light.ikea_of_sweden_tradfri_bulb_e14_cws_470lm_b8cf9ffe_level_light_color_on_off
-    domain: light
-  condition: []
-  action:
-  - service: script.lighttest
-  mode: single
 - id: '1634062378166'
   alias: Turn on Bedside Light @ 8PM
   description: ''
@@ -141,44 +53,231 @@
   alias: Bin Notification
   description: ''
   trigger:
-  - platform: time
-    at: '20:00:00'
-  condition:
-  - condition: state
+  - platform: state
+    entity_id: sensor.purple_bin
+    to: tomorrow
+  - platform: state
+    entity_id: sensor.food_bin
+    to: tomorrow
+  - platform: state
     entity_id: sensor.grey_bin
-    state: tomorrow
-    attribute: days
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 0
-  - condition: or
-    conditions:
-    - condition: state
-      entity_id: sensor.purple_bin
-      attribute: days
-      state: tomorrow
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 0
-        milliseconds: 0
-  - condition: or
-    conditions:
-    - condition: state
-      entity_id: sensor.food_bin
-      attribute: days
-      state: tomorrow
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 0
-        milliseconds: 0
+    to: tomorrow
+  condition:
+  - condition: time
+    after: '16:30:00'
+    before: '16:35:00'
+  action:
+  - service: notify.mobile_app_pixel_6_pro
+    data:
+      message: The {{ trigger.to_state.name }} needs to go out tomorrow.
+  mode: single
+- id: '1634510676509'
+  alias: GamingLightOnWhenMotion@Door
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_7e6bd406_ias_zone
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    after: '19:00:00'
+    before: 00:00:00
+  action:
+  - service: script.3_minute_turn_off
+  mode: single
+  max: 10
+- id: '1634662130055'
+  alias: Nightshift Alarm 1pm
+  description: ''
+  trigger:
+  - platform: time
+    at: '13:15:00'
+  condition: []
+  action:
+  - service: spotcast.start
+    data:
+      entity_id: media_player.googlehomemasterbedroom
+      uri: https://open.spotify.com/playlist/0HumFMzdJDGOqKjQh8qfpO?si=06ede76b31b048ae
+      shuffle: true
+      start_volume: 60
+      device_name: Master bedroom speaker
+      random_song: true
+  mode: single
+- id: '1635466373790'
+  alias: Work Notifications (Fraser)
+  description: Dayshift
+  trigger:
+  - platform: device
+    device_id: 3cb413ded1d3ec5466928e1b2ee75309
+    domain: device_tracker
+    entity_id: device_tracker.pixel_6_pro
+    type: enters
+    zone: zone.work
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: 08:30:00
   action:
   - service: notify.mobile_app_sm_g781b
     data:
-      title: 'Bin '
-      message: There Is A Bin Due To Go Out Tomorrow
-  mode: parallel
+      message: Fraser Has Arrived At Work. Love You ❤️‍
+  - service: notify.mobile_app_pixel_6_pro
+    data:
+      message: Fraser Has Arrived At Work. Love You ❤️‍
+  mode: single
   max: 10
+- id: '1639236015117'
+  alias: Turn off Bedside Light @ 0018
+  description: ''
+  trigger:
+  - platform: time
+    at: '12:18:00'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 91f46498cd0dcda397ed37ecb55f7b12
+    entity_id: light.ikea_e14_masterbedroom_bedside
+    domain: light
+  mode: single
+- id: '1643935589279'
+  alias: Work Notifications (Fraser)
+  description: Nightshift
+  trigger:
+  - platform: device
+    device_id: 3cb413ded1d3ec5466928e1b2ee75309
+    domain: device_tracker
+    entity_id: device_tracker.pixel_6_pro
+    type: enters
+    zone: zone.work
+  condition:
+  - condition: time
+    after: '18:00:00'
+    before: '22:30:00'
+  action:
+  - service: notify.mobile_app_sm_g781b
+    data:
+      message: Fraser Has Arrived At Work. Sleep Tight Darling, See You In The Morning.
+        Love You ❤️‍
+  - service: notify.mobile_app_pixel_6_pro
+    data:
+      message: Fraser Has Arrived At Work. Sleep Tight Darling, See You In The Morning.
+        Love You ❤️‍
+  mode: single
+  max: 10
+- id: '1644729762212'
+  alias: Turn on Gaming Desk Light at Darkness
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: '0'
+  condition:
+  - condition: state
+    entity_id: light.ikea_e14_gameroom
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.ikea_e14_gameroom
+  mode: single
+- id: '1644776409996'
+  alias: Turn Off Frasers Light When Away
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.fraser
+    zone: zone.home
+    event: leave
+  condition:
+  - condition: state
+    entity_id: light.ikea_e14_gameroom
+    state: 'on'
+  - condition: or
+    conditions:
+    - condition: time
+      after: '12:05:00'
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      device_id: b5004cfd5841072f0553dbda06fc5b6c
+  mode: single
+- id: '1645365807111'
+  alias: Plex Paused
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.plex_plex_for_lg_lg_oled55c14lb
+    from: playing
+    to: paused
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id:
+      - light.downstairs_wc
+      - light.kitchen_spotlights
+  mode: single
+- id: '1645365889229'
+  alias: Plex Resume Playing
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.plex_plex_for_lg_lg_oled55c14lb
+    from: paused
+    to: playing
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id:
+      - light.downstairs_wc
+      - light.kitchen_spotlights
+  mode: single
+- id: '1646332350513'
+  alias: Aqara Magic Cube
+  description: ''
+  use_blueprint:
+    path: Mikkelmoeller/aqara-magic-cube-zha-51-actions.yaml
+    input:
+      remote: 74527e7b71aae4d90bd800527cd25318
+      cube_shake:
+      - service: light.toggle
+        data:
+          transition: 4
+          color_name: coral
+          brightness_pct: 40
+        target:
+          entity_id: light.ikea_e14_gameroom
+- id: '1647544203922'
+  alias: Tag Game Room Tag is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: cfd9eb0b-d8be-4a8b-9379-f2af4bf12253
+  condition: []
+  action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.googlehomegameroom
+    data:
+      media_content_id: plex://8997
+      media_content_type: artist
+    metadata:
+      title: Juice WRLD
+      thumbnail: /api/plex_image_proxy/0b9697f14c0aed1e81fa8869b831c63debd0900d/8997
+      media_class: artist
+      children_media_class: album
+      navigateIds:
+      - {}
+      - media_content_type: plex
+        media_content_id: ''
+      - media_content_type: library
+        media_content_id: plex://4
+      - media_content_type: artist
+        media_content_id: plex://8997
+  mode: single
