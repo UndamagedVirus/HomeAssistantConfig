@@ -16,6 +16,13 @@
                 "welcome": "2.2.1"
             }
         },
-        "menu-menu-item-sidebar": true
+        "menu-menu-item-sidebar": true,
+        "debug": {
+            "filter": "filterSelected",
+            "filteredNodes": [
+                "ddeac476ec524d8d",
+                "11638f02f1d94631"
+            ]
+        }
     }
 }
