@@ -1,5 +1,4 @@
 default_config:
-
 # resources
   - type: js, 
     url: '/hacsfiles/garbage-collection-card/garbage-collection-card.js'
@@ -12,6 +11,7 @@ frontend:
   
 homeassistant:
   customize: !include customize.yaml
+  #packages: !include_dir_named include
 
 
 
@@ -28,7 +28,7 @@ panel_iframe:
 
  
 #
-updater:
+#updater:
 #template:
  # - sensor: to
   #    - name: "Github Last Commit"
@@ -132,25 +132,8 @@ speedtestdotnet:
 #     - 'Time Elapsed'
 #     - 'Time Remaining'
 
-switch:
-  - platform: wake_on_lan
-    name: BattleStation Switch
-    mac: !secret pclan
     
-binary_sensor: 
 
-  - platform: template
-    sensors:
-      battlestation_pc:
-        value_template: >-
-          {{ is_state('device_tracker.fraser', 'home') }}
-        device_class: connectivity
-        friendly_name: BattleStation
-      ds920nas:
-        value_template: >-
-          {{ is_state('device_tracker.synologynas', 'home') }}
-        device_class: connectivity
-        friendly_name: DS920_NAS
 
 
 
@@ -160,10 +143,13 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-group: !include includes/groups.yaml
-light: !include includes/lights.yaml
-sensor: !include includes/sensors.yaml
 
+binary_sensor: !include include/binary_sensor.yaml
+group: !include include/group.yaml
+light: !include include/light.yaml
+sensor: !include include/sensor.yaml
+switch: !include include/switch.yaml
+template: !include include/template.yaml
 
 
 

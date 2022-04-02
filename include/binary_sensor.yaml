@@ -1,0 +1,13 @@
+
+- platform: template
+  sensors:
+      battlestation_pc:
+        value_template: >-
+          {{ is_state('device_tracker.fraser', 'home') }}
+        device_class: connectivity
+        friendly_name: BattleStation
+      ds920nas:
+        value_template: >-
+          {{ is_state('device_tracker.synologynas', 'home') }}
+        device_class: connectivity
+        friendly_name: DS920_NAS
