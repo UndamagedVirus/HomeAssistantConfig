@@ -14,6 +14,12 @@
             },
             "tours": {
                 "welcome": "2.2.1"
+            },
+            "keymap": {
+                "core:group-selection": {
+                    "scope": "red-ui-workspace",
+                    "key": "ctrl-g"
+                }
             }
         },
         "menu-menu-item-sidebar": true,
@@ -22,8 +28,12 @@
             "filteredNodes": [
                 "ddeac476ec524d8d",
                 "11638f02f1d94631",
-                "8de9cc6d0ae5f4c8"
-            ]
+                "8de9cc6d0ae5f4c8",
+                "57d3ef4fb05b9465",
+                "80764cd58a453f58",
+                "b50d719cf367a9ff"
+            ],
+            "clearType": "all"
         }
     }
 }

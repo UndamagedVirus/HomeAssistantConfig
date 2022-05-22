@@ -1,25 +1,29 @@
 - platform: group
   name: Gaming Room Lights
   entities:
-      - light.ikea_e14_gameroom
-      - light.ikea_e27_gameroom
+    - light.ikea_e14_gameroom
+    - light.ikea_e27_gameroom
 
-- platform: group
-  name: Gaming Room Lights
-  entities:
-      - light.ikea_e14_master
-      - light.ikea_e27_gameroom
-      
 - platform: group
   name: Downstairs WC
   entities:
-      - light.downstairswc_1_gu10_345lm
-      - light.downstairswc_2_gu10_345lm
-      
+    - light.downstairswc_1_gu10_345lm
+    - light.downstairswc_2_gu10_345lm
+
 - platform: group
   name: Kitchen Spotlights
   entities:
-      - light.gu10ws345lmkitchenspotlight1
-      - light.gu10ws345lmkitchenspotlight2
-      - light.gu10ws345lmkitchenspotlight3
-      - light.gu10ws345lmkitchenspotlight4
+    - light.gu10ws345lmkitchenspotlight1
+    - light.gu10ws345lmkitchenspotlight2
+    - light.gu10ws345lmkitchenspotlight3
+    - light.gu10ws345lmkitchenspotlight4
+
+- platform: group
+  name: all lights
+  entities:
+    - light.kitchen_spotlights
+    - light.downstairs_wc
+    - light.ikea_e14_gameroom
+    - light.ikea_e27_gameroom
+    - light.ikea_e14_masterbedroom_bedside
+    - light.ikea_e27_masterbedroom

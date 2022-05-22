@@ -269,16 +269,16 @@
 
 <p>&nbsp;</p>
 
-## Automations
+## Automations 
 
-* Send Notification To Home Assistant When I Arrive & Leave Work
-* 
+- [x] Send notification to J Phone when I arrive & leave work
+- [x] Send notification to my phone when 3D-Print is finishing
+- [x] Send notifcation to my phone with alternating morning reminders
+- [x] Send notifciation to phones to tell which bin needs to go out 
+
 
 <p>&nbsp;</p>
 
-## Automation Ideas
-
-<p>&nbsp;</p>
 
 ## To-Do-List
 

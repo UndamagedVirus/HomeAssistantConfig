@@ -13,3 +13,19 @@
           brightness_pct: 40
         target:
           entity_id: light.ikea_e14_gameroom
+- id: '1649696810971'
+  alias: New Automation
+  description: ''
+  trigger:
+  - device_id: bdc72f1122edd2f4757388f13fc590ba
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: toggle
+    device_id: c716be5cba86e0b7d4c712dae63e282f
+    entity_id: light.ikea_e27_gameroom
+    domain: light
+  mode: single

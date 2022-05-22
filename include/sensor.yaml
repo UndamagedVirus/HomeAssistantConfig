@@ -1,5 +1,6 @@
 - platform: uptime
-  name: Time Online
+  name:
+    Time Online
 
     #Steam Online
 - platform: steam_online
@@ -11,14 +12,13 @@
     - 76561198144963307
 
 - platform: tautulli
-  api_key: !secret tautulli 
+  api_key: !secret tautulli
   host: localhost
-  monitored_users: 
-      - undamagedvirus_
+  monitored_users:
+    - undamagedvirus_
   monitored_conditions:
-      - Episode_Count
-     
-      
+    - Episode_Count
+
 - platform: systemmonitor
   resources:
     - type: disk_use
@@ -28,10 +28,9 @@
     - type: last_boot
     - type: processor_use
     - type: processor_temperature
-      
+
 - platform: openhardwaremonitor
   host: 192.168.0.19
-  
 
 - platform: spotcast
 
@@ -44,18 +43,63 @@
       value_template: "{{ state_attr('sensor.pixel_6_pro_internal_storage', 'Free internal storage') }}"
 
     battlestation:
-        value_template: "{% if is_state('device_tracker.fraser', 'home') %} Online {% else %} Offline {% endif %}"
+      value_template: "{% if is_state('device_tracker.fraser', 'home') %} Online {% else %} Offline {% endif %}"
 
 - platform: google_fit
   name: Google Fit
   client_id: !secret googlefitclient
   client_secret: !secret googlefitsecret
 
-
-
-
-
-
 - platform: command_line
   name: shopping_list
   command: python3 /config/shopping_list.py
+
+- platform: template
+  sensors:
+    free_nas_storage:
+      friendly_name: "Free NAS Storage"
+      value_template: "{{ states('sensor.fraserhomeds920_memory_total_real') | float - states('sensor.fraserhomeds920_used_space') | float * 1024 }}"
+      unit_of_measurement: "MB"
+
+- platform: rest
+  name: FireHD10
+  json_attributes:
+    - ip4
+    - batteryLevel
+    - isPlugged
+    - plugged
+    - kioskMode
+    - screenBrightness
+    - motionDetectorState
+    - maintenanceMode
+    - appFreeMemory
+    - appUsedMemory
+    - totalFreeMemory
+    - totalUsedMemory
+    - mac
+    - startUrl
+    - currentPage
+    - screenOrientation
+    - screenBrightness
+    - screenLocked
+    - screenOn
+    - batteryTemperature
+
+  resource: !secret firehd10_url
+  value_template: "{{ value_json.screenOn }}"
+
+- platform: rest
+  name: FireHD10 Settings
+  json_attributes:
+    - timeToScreenOffV2
+    - screenBrightness
+    - microphoneAccess
+    - motionSensitivity
+    - motionDection
+    - motionDetectionAcoustic
+    - motionSensitivityAcoustic
+    - screenOffInDarkness
+    - darknessLevel
+  resource: !secret firehd10_settings
+  value_template: "{{ value_json.startURL }}"
+  scan_interval: 10

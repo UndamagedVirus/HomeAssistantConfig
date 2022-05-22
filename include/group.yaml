@@ -1,0 +1,6 @@
+All_Lights:
+  name: All LightsGroup
+  entities:
+    - light.kitchen_spotlights
+    - light.downstairs_wc
+    - light.ikea_e14_gameroom
